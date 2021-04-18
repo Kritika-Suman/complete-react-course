@@ -24,12 +24,32 @@ class App extends Component {
 //                                  ]})
 //    }
 
-    nameChangedHandler = (event) => {
-        this.setState({persons: [
-                                    {name: "Kitty", age: 23},
-                                    {name: event.target.value, age: 21},
-                                    {name: "Prashant", age: 21}
-                                ]})
+    nameChangedHandler = (event, id) => {
+
+        const personIndex = this.state.persons.findIndex(p => {
+            return p.id === id;
+        });
+
+        console.log(personIndex);
+
+//        const person = [this.state.persons[personIndex]; // It is the reference of the person,
+                                                        // so we should not directly mutate it.
+
+//        we should create a new JavaScript object and then use spread operator.
+
+        const person = {
+            ...this.state.persons[personIndex]
+        };
+
+//        Alternate approach,
+//        const person = object.assign({}, this.state.persons[personIndex]);
+
+        person.name = event.target.value;
+
+        const persons = [...this.state.persons];
+        persons[personIndex] = person;
+
+        this.setState({persons: persons});
     }
 
 //    To delete a person from array of person
@@ -74,6 +94,7 @@ class App extends Component {
                                     name={person.name}
                                     age={person.age}
                                     key={person.id}
+                                    changed={(event)=>this.nameChangedHandler(event, person.id)}
                                />
                     })}
                 </div>
