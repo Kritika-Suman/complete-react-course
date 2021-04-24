@@ -1,6 +1,22 @@
 import React, {Component} from 'react';
+import styled from 'styled-components';
 import './App.css';
+
 import Person from './Person/Person';
+
+const StyledButton = styled.button` // We will remove the quotes from the values and add ; after
+                                    //each property-value pair because, we are using regular CSS.
+    background-color: green; // We need to use regular CSS properties not camelCase ones.
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+    &:hover { // We need to add & before pseudo selectors
+        background-color: lightgreen;
+        color: black;
+    }
+`;
 
 class App extends Component {
 
@@ -129,13 +145,13 @@ class App extends Component {
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 <p className={classes.join(' ')}>This is really working!</p>
-                <button
-                style={style}
+                <StyledButton
+//                style={style}
 //                    onClick={() => this.switchNameHandler("Kritika!!")}
                   onClick={this.togglePersonsHandler}
                 >
                     Toggle Persons
-                </button>
+                </StyledButton>
                 {persons}
             </div>
           );
