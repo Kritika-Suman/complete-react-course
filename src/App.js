@@ -1,23 +1,23 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import './App.css';
+import classes from './App.module.css';
 
 import Person from './Person/Person';
 
-const StyledButton = styled.button` // We will remove the quotes from the values and add ; after
-                                    //each property-value pair because, we are using regular CSS.
-    background-color: ${props => props.alt ? 'red' : 'green'};
-    // We need to use regular CSS properties not camelCase ones.
-    color: white;
-    font: inherit;
-    border: 1px solid blue;
-    padding: 8px;
-    cursor: pointer;
-    &:hover { // We need to add & before pseudo selectors
-        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-        color: black;
-    }
-`;
+//const StyledButton = styled.button` // We will remove the quotes from the values and add ; after
+//                                    //each property-value pair because, we are using regular CSS.
+//    background-color: ${props => props.alt ? 'red' : 'green'};
+//    // We need to use regular CSS properties not camelCase ones.
+//    color: white;
+//    font: inherit;
+//    border: 1px solid blue;
+//    padding: 8px;
+//    cursor: pointer;
+//    &:hover { // We need to add & before pseudo selectors
+//        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+//        color: black;
+//    }
+//`;
 
 class App extends Component {
 
@@ -105,6 +105,8 @@ class App extends Component {
 //        };
 
         let persons = null; // default
+//        let btnClass = [classes.Button];
+        let btnClass = '';
 
         if (this.state.showPersons) { // Its not JSX its Normal JavaScript here
 
@@ -128,31 +130,38 @@ class App extends Component {
 //                                color: 'black',
 //                            };
 
+//            btnClass.push(classes.Red)
+              btnClass = classes.Red
+
         }
 
 //        let classes = ['red', 'bold'].join(' '); // This will return this array of strings into one string
                                                  // "red bold"
 
-          let classes = [];
+//          let classes = [];
+          const assignedClasses = [];
           if (this.state.persons.length <= 2) {
-                classes.push('red'); // classes = ['red']
+                assignedClasses.push(classes.red); // classes = ['red']
           }
 
           if  (this.state.persons.length <= 1) {
-                classes.push('bold'); // classes = ['red', 'bold']
+                assignedClasses.push(classes.bold); // classes = ['red', 'bold']
           }
 
         return (
-            <div className="App">
+            <div className={classes.App}>
                 <h1>Hi, I'm a React App</h1>
-                <p className={classes.join(' ')}>This is really working!</p>
-                <StyledButton alt={this.state.showPersons}
+                <p className={assignedClasses.join(' ')}>This is really working!</p>
+                <button className={btnClass}
+//                < button className={btnClass.join(' ')}
+//                <StyledButton alt={this.state.showPersons}
 //                style={style}
 //                    onClick={() => this.switchNameHandler("Kritika!!")}
                   onClick={this.togglePersonsHandler}
                 >
                     Toggle Persons
-                </StyledButton>
+//                </StyledButton>
+                </button>
                 {persons}
             </div>
           );
