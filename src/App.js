@@ -6,14 +6,15 @@ import Person from './Person/Person';
 
 const StyledButton = styled.button` // We will remove the quotes from the values and add ; after
                                     //each property-value pair because, we are using regular CSS.
-    background-color: green; // We need to use regular CSS properties not camelCase ones.
+    background-color: ${props => props.alt ? 'red' : 'green'};
+    // We need to use regular CSS properties not camelCase ones.
     color: white;
     font: inherit;
     border: 1px solid blue;
     padding: 8px;
     cursor: pointer;
     &:hover { // We need to add & before pseudo selectors
-        background-color: lightgreen;
+        background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
         color: black;
     }
 `;
@@ -88,20 +89,20 @@ class App extends Component {
 
     render() {
 
-        const style = {
-
-            backgroundColor: 'green',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black',
-            }
-
-        };
+//        const style = {
+//
+//            backgroundColor: 'green',
+//            color: 'white',
+//            font: 'inherit',
+//            border: '1px solid blue',
+//            padding: '8px',
+//            cursor: 'pointer',
+//            ':hover': {
+//                backgroundColor: 'lightgreen',
+//                color: 'black',
+//            }
+//
+//        };
 
         let persons = null; // default
 
@@ -121,11 +122,11 @@ class App extends Component {
                 </div>
             );
 
-            style.backgroundColor = 'red';
-            style[':hover'] = {
-                                backgroundColor: 'salmon',
-                                color: 'black',
-                            };
+//            style.backgroundColor = 'red';
+//            style[':hover'] = {
+//                                backgroundColor: 'salmon',
+//                                color: 'black',
+//                            };
 
         }
 
@@ -145,7 +146,7 @@ class App extends Component {
             <div className="App">
                 <h1>Hi, I'm a React App</h1>
                 <p className={classes.join(' ')}>This is really working!</p>
-                <StyledButton
+                <StyledButton alt={this.state.showPersons}
 //                style={style}
 //                    onClick={() => this.switchNameHandler("Kritika!!")}
                   onClick={this.togglePersonsHandler}
