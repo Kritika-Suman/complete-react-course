@@ -26,11 +26,6 @@ const person = (props) => {
 //           // which is 500 px otherwise it will stay fixed with 450 px.
 //    };
 
-    const rnd = Math.random();
-    if (rnd>0.7){
-        throw new Error('Something Went Wrong......');
-    }
-
     return(
 //        <div className="Person" style={style}>
 //        <StyledDiv>
