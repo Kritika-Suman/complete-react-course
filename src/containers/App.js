@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import classes from './App.module.css';
 
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Persons from '../components/Persons/Persons';
+import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 
 //const StyledButton = styled.button` // We will remove the quotes from the values and add ; after
 //                                    //each property-value pair because, we are using regular CSS.
@@ -113,7 +113,12 @@ class App extends Component {
 
             persons = (
                  <div>
-                    {this.state.persons.map((person, index) => {
+                    <Persons
+                        persons = {this.state.persons}
+                        clicked = {this.deletePersonHandler}
+                        changed = {this.nameChangedHandler}
+                    />
+                    {/*this.state.persons.map((person, index) => {
                         return <Person
                                     click={() => this.deletePersonHandler(index)}
                                     name={person.name}
@@ -121,7 +126,7 @@ class App extends Component {
                                     key={person.id}
                                     changed={(event)=>this.nameChangedHandler(event, person.id)}
                                />
-                    })}
+                    })*/}
                 </div>
             );
 
