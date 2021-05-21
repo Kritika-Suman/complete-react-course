@@ -12,7 +12,7 @@ import reportWebVitals from './reportWebVitals';
 //);
 
 ReactDOM.render(
-    <App/>,
+    <App appTitle="Person Manager"/>,
     document.getElementById('root')
 );
 
