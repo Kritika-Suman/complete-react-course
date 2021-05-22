@@ -43,6 +43,11 @@ class App extends Component {
         return state;
     }
 
+    // Will be removed in future
+    componentWillMount(){
+        console.log('[App.js] componentWillMount');
+    }
+
     componentDidMount(){
         console.log('[App.js] componentDidMount');
     }
