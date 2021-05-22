@@ -23,6 +23,11 @@ import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary';
 
 class App extends Component {
 
+    constructor(props){
+        super(props);
+        console.log('[App.js] constructor');
+    }
+
     state = {
         persons: [
             {id: "Kitty1", name: "Kitty", age: 23},
@@ -31,6 +36,15 @@ class App extends Component {
         ],
         otherState: "some other value",
         showPersons: false
+    }
+
+    static getDerivedStateFromProps(props, state){
+        console.log('[App.js] getDerivedStateFromProps', props);
+        return state;
+    }
+
+    componentDidMount(){
+        console.log('[App.js] componentDidMount');
     }
 
 //    switchNameHandler = (newName) => {
@@ -90,6 +104,8 @@ class App extends Component {
     }
 
     render() {
+
+        console.log('[App.js] render');
 
 //        const style = {
 //
