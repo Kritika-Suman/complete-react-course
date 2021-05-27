@@ -44,9 +44,10 @@ class App extends Component {
     }
 
     // Will be removed in future
-    componentWillMount(){
-        console.log('[App.js] componentWillMount');
-    }
+    // Only older versions of react will Support this
+//    componentWillMount(){
+//        console.log('[App.js] componentWillMount');
+//    }
 
     componentDidMount(){
         console.log('[App.js] componentDidMount');
